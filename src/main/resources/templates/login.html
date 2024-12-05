@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            body {
+                background-color: #f0e5ff; 
+            }
+            .container {
+                margin-top: 100px; 
+                background-color: #ffffff; 
+                border-radius: 10px; 
+                padding: 40px; 
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+            }
+            h1 {
+                color: #6a5acd; 
+                margin-bottom: 30px; 
+            }
+            .btn-primary {
+                background-color: #6a5acd; 
+                border-color: #6a5acd; 
+            }
+            .btn-primary:hover {
+                background-color: #483d8b; 
+                border-color: #483d8b; 
+            }
+            .error-message {
+                color: red; 
+                margin-top: 10px; 
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <h1 class="text-center">Iniciar Sesión</h1>
+
+            <form th:action="@{/login}" th:object="${usuario}" method="post">
+                <div class="form-group">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" th:field="*{username}" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" th:field="*{password}" class="form-control" required />
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+
+                <div th:if="${mensajeError}" class="error-message text-center">
+                    [[${mensajeError}]]
+                </div>
+            </form>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
